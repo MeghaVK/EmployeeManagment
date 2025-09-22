@@ -1,0 +1,58 @@
+<div class="container">
+    <div class="tab-pane fade show active p-4" id="employees" role="tabpanel">
+        <form class="form mb-4" [formGroup]="projectForm">
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="projectname" class="form-label">Project Name</label>
+                    <input type="text" class="forminput" formControlName="projectName" />
+                </div>
+                <div class="col-md-6">
+                    <label for="projectname" class="form-label">Client Name</label>
+                    <input type="text" class="forminput" formControlName="clientName" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="startdate" class="form-label">Start Date</label>
+                    <input type="date" class="forminput" formControlName="startDate" />
+                </div>
+                <div class="col-md-6">
+                    <label for="leadbyEmpId" class="form-label">Lead By Employee ID</label>
+                    <select class="form-select" formControlName="leadByEmpId">
+                        <option>Select Employee</option>
+                        @for(emp of empList$ | async;track $index){
+                            <option [value]="emp.employeeId">{{emp.employeeName}}</option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <label for="contactperson" class="form-label">Contact Person</label>
+                    <input type="text" class="forminput" formControlName="contactPerson" />
+                </div>
+                <div class="col-md-4">
+                    <label for="contactname" class="form-label">Contact Number</label>
+                    <input type="text" class="forminput" formControlName="contactNo" />
+                </div>
+                 <div class="col-md-4">
+                    <label for="emailId" class="form-label">Email ID</label>
+                    <input type="text" class="forminput" formControlName="emailId" />
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-12 mt-4">
+                    @if(projectForm.controls['projectId'].value===0){
+                         <button type="button" class="btn btn-success mx-2 " (click)="onSubmit()">Save Project</button>
+                    }
+                    @else {
+                        <button type="button" class="btn btn-warning mx-2 " (click)="onUpdate()">Update Project</button>
+                    }
+                    
+
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

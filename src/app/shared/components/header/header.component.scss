@@ -1,0 +1,27 @@
+.custom-navbar {
+  background-color: #5ca28b;
+
+  .nav-link {
+    color: white !important;
+    font-weight: 500;
+    margin-right: 15px;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: #e0f2f1 !important; // slightly lighter on hover
+    }
+  }
+
+  .navbar-brand {
+    font-weight: bold;
+    color: white !important;
+  }
+
+  .navbar-toggler {
+    border: none;
+
+    .navbar-toggler-icon {
+      filter: brightness(0) invert(1); // makes hamburger white
+    }
+  }
+}

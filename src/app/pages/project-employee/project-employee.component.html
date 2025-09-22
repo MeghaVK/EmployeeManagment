@@ -1,0 +1,108 @@
+<div class="container mt-5">
+
+    <div class="tab-pane fade show " id="project-employee" role="tabpanel">
+        <div class="row">
+            <div class="col-8">
+                <div class="card">
+                    <div class="card-header bg-warning">
+                        <h3>Project Employees</h3>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-responsive table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Emp Project ID</th>
+                                    <th>Project ID</th>
+                                    <th>Employee ID</th>
+                                    <th>Assigned Date</th>
+                                    <th>Role</th>
+                                    <th>Is Active</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                
+                                @for(projEmp of projectEmpList$();track $index){
+                                    <tr>
+                                
+                                <td>{{projEmp.empProjectId}}</td>
+                                <td>{{projEmp.projectId}} </td>
+                                <td>{{projEmp.empId}}</td>
+                                <td>{{projEmp.assignedDate}}</td>
+                                <td>{{projEmp.role}}</td>
+                                <td>{{projEmp.isActive}}</td>
+                                <td>
+                                    <button type="button" class="btn btn-warning mx-2"
+                                        (click)="onEdit(projEmp)">Edit</button>
+                                    <button type="button" class="btn btn-danger"
+                                        (click)="onDelete(projEmp.empProjectId)">Delete</button>
+                                </td>
+</tr>
+                                }
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-4">
+                <div class="card">
+                    <div class="card-header bg-warning">
+                        <h3>Add New Project Employee</h3>
+                    </div>
+                    <div class="card-body">
+                        <form class="mt-4" [formGroup]="form">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="projectId" class="form-label" >Project ID</label>
+                                    <select class="form-select" formControlName="projectId">
+                                        <option value="select project" aria-placeholder="select project">Select Project</option>
+                                        @for(pid of projectList$ | async;track $index){
+                                            <option [value]="pid.projectId">{{pid.projectName}}</option>
+
+                                        }
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="employeeId" class="form-label" >Employee ID</label>
+                                
+                                    <select formControlName="empId" class="form-select">
+                                        <option>Select EmpId</option>
+                                        @for(emp of empList$ | async;track $index){
+                                            <option [value]="emp.employeeId">{{emp.employeeName}}</option>
+
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="startdate" class="form-label" >Assigned Date</label>
+                                    <input type="date" class="forminput" formControlName="assignedDate" />
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="role" class="form-label" >Role</label>
+                                    <input type="text" class="forminput" formControlName="role" />
+                                </div>
+                            </div>
+                             <div class="row">
+                                <div class="col-md-6 d-flex align-items-center ">
+                                    <label for="role">IsActive</label>
+                                     <input type="checkbox" class="mx-2" formControlName="isActive" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 text-end">
+                                    <button type="button" (click)="onSubmit()" class="btn btn-success mt-2">Submit</button>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,23 @@
+<div class="container-fluid vh-100 eFlex backgroundColor">
+    <div class="row w-100">
+        <div class="col-md-4 offset-md-6">
+            <div class="card shadow p-4 card-width">
+                <h3 class="text-center m-2 p-4">Emplyoee Login</h3>
+                <form>
+                    <div class="mb-2 p-2">
+                        <!-- <label class="form-label">Username</label> -->
+                         
+                        <input type="text" class=" forminput" name="username" [(ngModel)]="loginObj.username" placeholder="username"/>
+                    </div>
+                    <div class="mb-3 p-2">
+                        <!-- <label class="form-label">Username</label> -->
+                        <input type="password" class="forminput" name="password" [(ngModel)]="loginObj.password" placeholder="password"/>
+                    </div>
+                    <div class="mb-3 p-2 eFlex">
+                        <button type="button" class="btn-custom" (click)="onLogin()">Login</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

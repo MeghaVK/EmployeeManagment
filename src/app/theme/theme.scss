@@ -1,0 +1,12 @@
+@import './app/theme/mixins';
+@import './app/theme/variables';
+.eFlex{
+    @include flexend;
+}
+.backgroundColor{
+    background-color:aquamarine
+}
+.card-width{
+    width: 100%;
+    max-width: 200px;
+}
